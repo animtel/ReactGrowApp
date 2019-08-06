@@ -1,3 +1,9 @@
+## How to run?
+
+- you need to install nodejs and npm: [https://nodejs.org/en/](https://nodejs.org/en/) download and install
+- clone the project and go to the root of the project folder
+- run `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
