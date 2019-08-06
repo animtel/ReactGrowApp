@@ -1,19 +1,31 @@
 import React, { Component } from "react";
 
 class AddContact extends Component {
-  state = {
-    name: "",
-    email: "",
-    phone: ""
-  };
+  constructor(props) {
+    super(props);
+    this.nameInput = React.createRef();
+    this.emailInput = React.createRef();
+    this.phoneInput = React.createRef();
+  }
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
   onSubmit = e => {
     e.preventDefault();
+    const contact = {
+      name: this.nameInput.current.value,
+      email: this.emailInput.current.value,
+      phone: this.phoneInput.current.value
+    };
+    console.log(contact);
+  };
+
+  static defaultProps = {
+    name: "Daniel Def",
+    email: "danieldef@gmail.com",
+    phone: "111-111-1111"
   };
 
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone } = this.props;
     return (
       <div className="card mb-3">
         <div className="card-header">Add Contact</div>
@@ -26,8 +38,8 @@ class AddContact extends Component {
                 className="form-control"
                 placeholder="Enter name..."
                 name="name"
-                value={name}
-                onChange={this.onChange}
+                defaultValue={name}
+                ref={this.nameInput}
               />
             </div>
             <div className="form-group">
@@ -37,8 +49,8 @@ class AddContact extends Component {
                 className="form-control"
                 placeholder="Enter email..."
                 name="email"
-                value={email}
-                onChange={this.onChange}
+                defaultValue={email}
+                ref={this.emailInput}
               />
             </div>
             <div className="form-group">
@@ -48,8 +60,8 @@ class AddContact extends Component {
                 className="form-control"
                 placeholder="Enter phone..."
                 name="phone"
-                value={phone}
-                onChange={this.onChange}
+                defaultValue={phone}
+                ref={this.phoneInput}
               />
             </div>
             <input
