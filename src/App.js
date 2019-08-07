@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 import Contacts from "./components/contacts/Contacts";
 import AddContact from "./components/contacts/AddContact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -22,6 +23,7 @@ class App extends React.Component {
                 <Route exact path="/contact/add" component={AddContact} />
                 {/* for passing params to route, use :paramName and in component you can call props.match.prams.paramName */}
                 <Route exact path="/about" component={About} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
