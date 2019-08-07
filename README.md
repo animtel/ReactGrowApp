@@ -2,6 +2,8 @@
 
 This is a simple project, which simulate the real life situations. Here implemented basic CRUD operations with contacts which have a name, email and phone. I was working with the components, jsx, props, state, context api, forms, react router, lifecycle of components, http requests, composition approach etc.
 
+For simulate db i was using this site https://jsonplaceholder.typicode.com/ which provide some json data. Thats why, if you will change, add or delete contact, after reload the page, they return back...)
+
 ## How to run?
 
 - you need to install nodejs and npm: [https://nodejs.org/en/](https://nodejs.org/en/) download and install
