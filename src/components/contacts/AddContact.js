@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Consumer } from "../../context";
+import { Consumer, DataUrl } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
 import axios from "axios";
 
@@ -50,10 +50,7 @@ class AddContact extends Component {
       phone: phone
     };
 
-    const resp = await axios.post(
-      "https://jsonplaceholder.typicode.com/users",
-      newContact
-    );
+    const resp = await axios.post(DataUrl, newContact);
 
     dispatch({ type: "ADD_CONTACT", payload: resp.data });
 

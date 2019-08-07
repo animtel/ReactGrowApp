@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const Context = React.createContext();
+export const DataUrl = "https://jsonplaceholder.typicode.com/users/";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -38,7 +39,7 @@ export class Provider extends Component {
   };
 
   async componentDidMount() {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+    const res = await axios.get(DataUrl);
 
     this.setState({
       contacts: res.data

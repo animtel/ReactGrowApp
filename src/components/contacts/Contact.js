@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Consumer } from "../../context";
+import { Consumer, DataUrl } from "../../context";
 import axios from "axios";
 
 class Contact extends Component {
@@ -21,7 +21,7 @@ class Contact extends Component {
 
   onDeleteClick = async (id, dispatch) => {
     try {
-      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      await axios.delete(DataUrl + id);
       dispatch({ type: "DELETE_CONTACT", payload: id });
     } catch (e) {
       dispatch({ type: "DELETE_CONTACT", payload: id });
