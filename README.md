@@ -1,3 +1,7 @@
+## About project:
+
+This simple project, which simulate real life situations. Here implemented basic CRUD operations with contacts which have name, email and phone. I was working with components, jsx, props, state, context api, forms, react router, lifecycle of components, http requests, composition approach etc.
+
 ## How to run?
 
 - you need to install nodejs and npm: [https://nodejs.org/en/](https://nodejs.org/en/) download and install
