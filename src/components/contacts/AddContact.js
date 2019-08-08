@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Consumer, DataUrl } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
-import axios from "axios";
 
 class AddContact extends Component {
   state = {
@@ -12,49 +10,36 @@ class AddContact extends Component {
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
-  onSubmit = async (dispatch, e) => {
+  onSubmit = e => {
     e.preventDefault();
+
     const { name, email, phone } = this.state;
 
-    //Check for errors
+    // Check For Errors
     if (name === "") {
-      this.setState({
-        errors: {
-          name: "Name is required"
-        }
-      });
+      this.setState({ errors: { name: "Name is required" } });
       return;
     }
 
     if (email === "") {
-      this.setState({
-        errors: {
-          email: "Email is required"
-        }
-      });
+      this.setState({ errors: { email: "Email is required" } });
       return;
     }
 
     if (phone === "") {
-      this.setState({
-        errors: {
-          phone: "Phone is required"
-        }
-      });
+      this.setState({ errors: { phone: "Phone is required" } });
       return;
     }
 
     const newContact = {
-      name: name,
-      email: email,
-      phone: phone
+      name,
+      email,
+      phone
     };
 
-    const resp = await axios.post(DataUrl, newContact);
+    //// SUBMIT CONTACT ////
 
-    dispatch({ type: "ADD_CONTACT", payload: resp.data });
-
-    //clear state
+    // Clear State
     this.setState({
       name: "",
       email: "",
@@ -69,50 +54,43 @@ class AddContact extends Component {
     const { name, email, phone, errors } = this.state;
 
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
-            <div className="card mb-3">
-              <div className="card-header">Add Contact</div>
-              <div className="card-body">
-                <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <TextInputGroup
-                    label="Name"
-                    name="name"
-                    placeholder="Enter name..."
-                    value={name}
-                    onChange={this.onChange}
-                    error={errors.name}
-                  />
-                  <TextInputGroup
-                    label="Email"
-                    name="email"
-                    placeholder="Enter email..."
-                    value={email}
-                    type="email"
-                    onChange={this.onChange}
-                    error={errors.email}
-                  />
-                  <TextInputGroup
-                    label="Phone"
-                    name="phone"
-                    placeholder="Enter phone..."
-                    value={phone}
-                    onChange={this.onChange}
-                    error={errors.phone}
-                  />
-                  <input
-                    type="submit"
-                    value="Add Contact"
-                    className="btn btn-light btn-block"
-                  />
-                </form>
-              </div>
-            </div>
-          );
-        }}
-      </Consumer>
+      <div className="card mb-3">
+        <div className="card-header">Add Contact</div>
+        <div className="card-body">
+          <form onSubmit={this.onSubmit.bind(this)}>
+            <TextInputGroup
+              label="Name"
+              name="name"
+              placeholder="Enter name..."
+              value={name}
+              onChange={this.onChange}
+              error={errors.name}
+            />
+            <TextInputGroup
+              label="Email"
+              name="email"
+              placeholder="Enter email..."
+              value={email}
+              type="email"
+              onChange={this.onChange}
+              error={errors.email}
+            />
+            <TextInputGroup
+              label="Phone"
+              name="phone"
+              placeholder="Enter phone..."
+              value={phone}
+              onChange={this.onChange}
+              error={errors.phone}
+            />
+            <input
+              type="submit"
+              value="Add Contact"
+              className="btn btn-light btn-block"
+            />
+          </form>
+        </div>
+      </div>
     );
   }
 }
