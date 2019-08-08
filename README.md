@@ -4,6 +4,12 @@ This is a simple project, which simulate the real life situations. Here implemen
 
 For simulate db i was using this site https://jsonplaceholder.typicode.com/ which provide some json data. Thats why, if you will change, add or delete contact, after reload the page, they return back...)
 
+## Different versions:
+
+- In the `master` branch you can see simple implementation crud operations; For managing of state i've used context api;
+- In the `redux-version` branch you can see different way for managing state of app by redux where i'm using standart approach store -> view -> dispatch -> action -> reducer -> store;
+
+
 ## How to run?
 
 - you need to install nodejs and npm: [https://nodejs.org/en/](https://nodejs.org/en/) download and install
